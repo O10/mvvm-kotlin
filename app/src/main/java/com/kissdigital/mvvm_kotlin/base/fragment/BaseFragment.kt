@@ -17,16 +17,16 @@ abstract class BaseFragment : RxFragment() {
             return activity.application as MyApp
         }
 
+    protected abstract val layoutId: Int
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDagger()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return LayoutInflater.from(context).inflate(getLayoutId(), container, false)
+        return LayoutInflater.from(context).inflate(layoutId, container, false)
     }
-
-    protected abstract fun getLayoutId(): Int
 
     protected open fun initDagger() {
 

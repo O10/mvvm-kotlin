@@ -12,13 +12,12 @@ import kotlinx.android.synthetic.main.fragment_clicks.*
  */
 class ClickFragment : MvvmFragment<ClicksViewModel>() {
 
+    override val layoutId = R.layout.fragment_clicks
+    override val viewModelType = ClicksViewModel::class.java
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         RxView.clicks(buttonClicks).subscribe() { viewModel.buttonClicked() }
         viewModel.clicksObservable.bindToLifecycle(this).subscribe { clicksNum.text = it.toString() }
     }
-
-    override fun getLayoutId(): Int = R.layout.fragment_clicks
-
-    override fun getViewModelType(): Class<ClicksViewModel> = ClicksViewModel::class.java
 }

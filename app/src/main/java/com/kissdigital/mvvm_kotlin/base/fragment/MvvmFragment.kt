@@ -9,8 +9,10 @@ import com.kissdigital.mvvm_kotlin.base.viewmodel.BaseViewModel
  */
 abstract class MvvmFragment<T : BaseViewModel> : BaseFragment() {
 
+    abstract protected val viewModelType: Class<T>
+
     val viewModel: T by lazy {
-        ViewModelProviders.of(this, myApp.appComponent.factory()).get(getViewModelType())
+        ViewModelProviders.of(this, myApp.appComponent.factory()).get(viewModelType)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +22,6 @@ abstract class MvvmFragment<T : BaseViewModel> : BaseFragment() {
             viewModel.onInitialized()
         }
     }
-
-    protected abstract fun getViewModelType(): Class<T>
 
     protected fun initViewModel() {}
 }

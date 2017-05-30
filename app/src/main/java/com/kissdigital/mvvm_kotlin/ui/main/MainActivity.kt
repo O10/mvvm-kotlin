@@ -13,6 +13,9 @@ import javax.inject.Inject
 
 class MainActivity : MvvmActivity<MainViewModel>() {
 
+    override val layoutId = R.layout.activity_main
+    override val viewModelType = MainViewModel::class.java
+
     @Inject
     lateinit internal var rxPermissions: RxPermissions
 
@@ -33,7 +36,4 @@ class MainActivity : MvvmActivity<MainViewModel>() {
                     mainText.text = location.toString()
                 }, { throwable -> Timber.e(throwable) })
     }
-
-    override fun getViewModelType(): Class<MainViewModel> = MainViewModel::class.java
-    override fun getLayoutId(): Int = R.layout.activity_main
 }

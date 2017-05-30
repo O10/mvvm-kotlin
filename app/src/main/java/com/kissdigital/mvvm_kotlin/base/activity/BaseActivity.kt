@@ -14,13 +14,13 @@ abstract class BaseActivity : RxAppCompatActivity() {
             return application as MyApp
         }
 
+    protected abstract val layoutId: Int
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        setContentView(layoutId)
         initDagger()
     }
-
-    protected abstract fun getLayoutId(): Int
 
     protected open fun initDagger() {
     }
