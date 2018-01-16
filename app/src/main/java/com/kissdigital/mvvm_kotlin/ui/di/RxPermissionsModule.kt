@@ -11,6 +11,7 @@ import dagger.Provides
 @Module
 class RxPermissionsModule(val activity: Activity) {
 
+
     @ActivityScope
     @Provides
     fun rxPermissions(): RxPermissions = RxPermissions(activity)

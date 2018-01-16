@@ -16,8 +16,6 @@ class MainActivity : MvvmActivity<MainViewModel>() {
     override val layoutId = R.layout.activity_main
     override val viewModelType = MainViewModel::class.java
 
-    @Inject
-    lateinit internal var rxPermissions: RxPermissions
 
     override fun initDagger() {
         DaggerMainActivityComponent.builder()
@@ -29,11 +27,11 @@ class MainActivity : MvvmActivity<MainViewModel>() {
     override fun onStart() {
         super.onStart()
 
-        rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION)
-                .filter { it }.flatMap { _ -> viewModel.locationObservable() }
-                .bindUntilEvent(lifecycle(), ActivityEvent.STOP)
-                .subscribe({ location ->
-                    mainText.text = location.toString()
-                }, { throwable -> Timber.e(throwable) })
+//        rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION)
+//                .filter { it }.flatMap { _ -> viewModel.locationObservable() }
+//                .bindUntilEvent(lifecycle(), ActivityEvent.STOP)
+//                .subscribe({ location ->
+//                    mainText.text = location.toString()
+//                }, { throwable -> Timber.e(throwable) })
     }
 }
