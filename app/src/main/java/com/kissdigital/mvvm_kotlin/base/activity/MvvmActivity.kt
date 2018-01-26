@@ -17,7 +17,7 @@ abstract class MvvmActivity<T : BaseViewModel> : BaseActivity() {
 
     abstract protected val viewModelType: Class<T>
 
-    val viewModel: T by lazy {
+    protected val viewModel: T by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(viewModelType)
     }
 
@@ -29,5 +29,5 @@ abstract class MvvmActivity<T : BaseViewModel> : BaseActivity() {
         }
     }
 
-    protected fun initViewModel() {}
+    private fun initViewModel() {}
 }

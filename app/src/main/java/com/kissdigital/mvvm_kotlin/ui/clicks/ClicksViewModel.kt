@@ -13,9 +13,7 @@ class ClicksViewModel @Inject constructor() : BaseViewModel() {
     private val clicksSubject: BehaviorSubject<Int> = BehaviorSubject.createDefault(0)
 
     val clicksObservable: Observable<Int>
-        get() {
-            return clicksSubject.hide()
-        }
+        get() = clicksSubject.hide()
 
     fun buttonClicked() {
         clicksSubject.onNext(clicksSubject.value + 1)

@@ -20,12 +20,8 @@ abstract class BaseFragment : RxFragment() {
     protected abstract val layoutId: Int
 
     override fun onAttach(context: Context?) {
-        AndroidSupportInjection.inject(this);
+        AndroidSupportInjection.inject(this)
         super.onAttach(context)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =

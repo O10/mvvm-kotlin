@@ -17,7 +17,7 @@ class ClickFragment : MvvmFragment<ClicksViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        RxView.clicks(buttonClicks).subscribe() { viewModel.buttonClicked() }
+        RxView.clicks(buttonClicks).subscribe { viewModel.buttonClicked() }
         viewModel.clicksObservable.bindToLifecycle(this).subscribe { clicksNum.text = it.toString() }
     }
 }

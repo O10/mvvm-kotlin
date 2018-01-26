@@ -1,4 +1,4 @@
-package com.kissdigital.mvvm_kotlin.ui.di
+package com.kissdigital.mvvm_kotlin.app.di.modules
 
 import android.app.Activity
 import com.kissdigital.mvvm_kotlin.app.di.scope.ActivityScope

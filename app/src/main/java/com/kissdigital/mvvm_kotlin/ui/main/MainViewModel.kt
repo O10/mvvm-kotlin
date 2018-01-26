@@ -20,15 +20,10 @@ class MainViewModel @Inject constructor(private val reactiveLocationProvider: Re
     @SuppressLint("MissingPermission")
     fun locationObservable(): Observable<Location> {
         val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(1000)
-
         return RxJavaInterop.toV2Observable(reactiveLocationProvider.getUpdatedLocation(locationRequest))
                 .doOnNext { currentLocation.onNext(it) }
                 .mergeWith(currentLocation.take(1))
                 .distinctUntilChanged()
     }
 
-    override fun onInitialized() {
-        super.onInitialized()
-        // Timber.d("View model param %s",stringParam)
-    }
 }

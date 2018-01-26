@@ -30,7 +30,7 @@ abstract class AppModule {
         @Provides
         @ApplicationScope
         @JvmStatic
-        fun sharedPreferences(application: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
+        fun sharedPreferences(application: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(application)
     }
 
 }
