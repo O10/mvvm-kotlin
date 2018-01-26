@@ -1,6 +1,6 @@
 package com.kissdigital.mvvm_kotlin.app.di.modules
 
-import com.kissdigital.mvvm_kotlin.ui.di.RxPermissionsModule
+import com.kissdigital.mvvm_kotlin.app.di.scope.ActivityScope
 import com.kissdigital.mvvm_kotlin.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -11,6 +11,8 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuildersModule {
 
-    @ContributesAndroidInjector()
+    @ActivityScope
+    @ContributesAndroidInjector(modules = arrayOf(ActivityModule::class))
     abstract fun contributeMainActivity(): MainActivity
+
 }

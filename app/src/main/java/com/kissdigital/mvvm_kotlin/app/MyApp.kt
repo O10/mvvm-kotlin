@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import com.kissdigital.mvvm_kotlin.BuildConfig
 import com.kissdigital.mvvm_kotlin.app.di.components.DaggerAppComponent
-import com.kissdigital.mvvm_kotlin.app.di.modules.AppModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -19,7 +18,7 @@ class MyApp : Application(), HasActivityInjector {
     @Inject
     internal lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
-    override fun activityInjector(): AndroidInjector<Activity>  = dispatchingAndroidInjector
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
 
     override fun onCreate() {
         super.onCreate()

@@ -13,7 +13,7 @@ import javax.inject.Inject
 /**
  * Created by O10 on 29.05.2017.
  */
-class MainViewModel @Inject constructor(val reactiveLocationProvider: ReactiveLocationProvider) : BaseViewModel() {
+class MainViewModel @Inject constructor(private val reactiveLocationProvider: ReactiveLocationProvider) : BaseViewModel() {
 
     private val currentLocation: BehaviorSubject<Location> = BehaviorSubject.create()
 
@@ -25,5 +25,10 @@ class MainViewModel @Inject constructor(val reactiveLocationProvider: ReactiveLo
                 .doOnNext { currentLocation.onNext(it) }
                 .mergeWith(currentLocation.take(1))
                 .distinctUntilChanged()
+    }
+
+    override fun onInitialized() {
+        super.onInitialized()
+        // Timber.d("View model param %s",stringParam)
     }
 }
