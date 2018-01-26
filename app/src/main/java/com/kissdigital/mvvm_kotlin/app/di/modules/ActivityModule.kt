@@ -18,14 +18,8 @@ abstract class ActivityModule {
 
     @Module
     companion object {
-
         @JvmStatic
         @Provides
         fun bundle(activity: Activity): Bundle = activity.intent.extras ?: Bundle.EMPTY
-
-        @JvmStatic
-        @Provides
-        fun someParam(bundle: Bundle): String = bundle.getString("test", "1")
-
     }
 }

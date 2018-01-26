@@ -2,8 +2,8 @@ package com.kissdigital.mvvm_kotlin.app.di.components
 
 import com.kissdigital.mvvm_kotlin.app.MyApp
 import com.kissdigital.mvvm_kotlin.app.di.modules.ActivityBuildersModule
-import com.kissdigital.mvvm_kotlin.app.di.modules.ViewModelModule
 import com.kissdigital.mvvm_kotlin.app.di.modules.AppModule
+import com.kissdigital.mvvm_kotlin.app.di.modules.ViewModelModule
 import com.kissdigital.mvvm_kotlin.app.di.scope.ApplicationScope
 import dagger.Component
 import dagger.android.AndroidInjectionModule
