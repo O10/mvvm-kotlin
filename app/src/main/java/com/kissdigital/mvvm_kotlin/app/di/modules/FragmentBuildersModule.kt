@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuildersModule {
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = arrayOf(FragmentModule::class, FragmentViewModelModule::class))
     abstract fun clicksFragment(): ClickFragment
 
 }

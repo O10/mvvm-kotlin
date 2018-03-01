@@ -4,8 +4,6 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.kissdigital.mvvm_kotlin.app.di.MyViewModelFactory
 import com.kissdigital.mvvm_kotlin.app.di.ViewModelKey
-import com.kissdigital.mvvm_kotlin.app.di.scope.ApplicationScope
-import com.kissdigital.mvvm_kotlin.ui.clicks.ClicksViewModel
 import com.kissdigital.mvvm_kotlin.ui.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -13,14 +11,10 @@ import dagger.multibindings.IntoMap
 
 /**
  * Created by Aleksander Wójcik on 24.01.2018.
+ * Module creating view models and arguments - probably needs seperation as app grows
  */
 @Module
-abstract class ViewModelModule {
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(ClicksViewModel::class)
-    abstract fun clicksViewModel(mainViewModel: ClicksViewModel): ViewModel
+abstract class ActivityViewModelModule {
 
     @Binds
     @IntoMap
@@ -28,7 +22,6 @@ abstract class ViewModelModule {
     abstract fun mainViewModel(mainViewModel: MainViewModel): ViewModel
 
     @Binds
-    @ApplicationScope
     abstract fun bindViewModelFactory(factory: MyViewModelFactory): ViewModelProvider.Factory
 
 }

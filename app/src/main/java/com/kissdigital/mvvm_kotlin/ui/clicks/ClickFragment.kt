@@ -12,6 +12,10 @@ import kotlinx.android.synthetic.main.fragment_clicks.*
  */
 class ClickFragment : MvvmFragment<ClicksViewModel>() {
 
+    companion object {
+        const val PAR_CLICKS_INITIAL_NUMBER = "initial_clicks"
+    }
+
     override val layoutId = R.layout.fragment_clicks
     override val viewModelType = ClicksViewModel::class.java
 

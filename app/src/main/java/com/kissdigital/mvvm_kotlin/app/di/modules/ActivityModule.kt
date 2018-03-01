@@ -2,6 +2,7 @@ package com.kissdigital.mvvm_kotlin.app.di.modules
 
 import android.app.Activity
 import android.os.Bundle
+import com.kissdigital.mvvm_kotlin.app.di.qualifier.ActivityBundle
 import com.kissdigital.mvvm_kotlin.ui.main.MainActivity
 import dagger.Binds
 import dagger.Module
@@ -19,6 +20,7 @@ abstract class ActivityModule {
     @Module
     companion object {
         @JvmStatic
+        @ActivityBundle
         @Provides
         fun bundle(activity: Activity): Bundle = activity.intent.extras ?: Bundle.EMPTY
     }

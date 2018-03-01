@@ -2,14 +2,12 @@ package com.kissdigital.mvvm_kotlin.app.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.kissdigital.mvvm_kotlin.app.di.scope.ApplicationScope
 import javax.inject.Inject
 import javax.inject.Provider
 
 /**
  * Created by Aleksander Wójcik on 07.11.2017.
  */
-@ApplicationScope
 class MyViewModelFactory @Inject constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
