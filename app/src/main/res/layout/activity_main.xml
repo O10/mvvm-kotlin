@@ -12,22 +12,30 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <fragment
-        android:name="com.kissdigital.mvvm_kotlin.ui.clicks.ClickFragment"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/testButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:tag="fragment_clicks"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:gravity="center"
+    <fragment
+        android:name="com.kissdigital.mvvm_kotlin.ui.clicks.ClickFragment"
+        android:id="@+id/fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

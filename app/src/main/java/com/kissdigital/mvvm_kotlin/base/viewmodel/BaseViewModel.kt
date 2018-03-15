@@ -18,7 +18,7 @@ open class BaseViewModel : ViewModel() {
         viewModelClearedSubject.onNext(Any())
     }
 
-    fun onInitialized() {
+    open fun onInitialized() {
         isViewModelInitialized = true
     }
 }

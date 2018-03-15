@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.kissdigital.mvvm_kotlin.app.MyApp
-import com.kissdigital.mvvm_kotlin.app.di.ApplicationScope
+import com.kissdigital.mvvm_kotlin.app.di.scope.ApplicationScope
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -30,8 +30,7 @@ abstract class AppModule {
         @Provides
         @ApplicationScope
         @JvmStatic
-        fun sharedPreferences(application: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
-
+        fun sharedPreferences(application: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(application)
     }
 
 }

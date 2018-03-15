@@ -8,8 +8,7 @@ import javax.inject.Provider
 /**
  * Created by Aleksander Wójcik on 07.11.2017.
  */
-class MyViewModelFactory @Inject
-constructor(private val creators: Map<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
+class MyViewModelFactory @Inject constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         var creator: Provider<out ViewModel>? = creators[modelClass]
@@ -25,6 +24,7 @@ constructor(private val creators: Map<Class<out ViewModel>, Provider<ViewModel>>
             throw IllegalArgumentException("unknown model class " + modelClass)
         }
         try {
+            @Suppress("UNCHECKED_CAST")
             return creator.get() as T
         } catch (e: Exception) {
             throw RuntimeException(e)

@@ -13,17 +13,17 @@ import javax.inject.Inject
 /**
  * Created by O10 on 29.05.2017.
  */
-class MainViewModel @Inject constructor(val reactiveLocationProvider: ReactiveLocationProvider) : BaseViewModel() {
+class MainViewModel @Inject constructor(private val reactiveLocationProvider: ReactiveLocationProvider) : BaseViewModel() {
 
     private val currentLocation: BehaviorSubject<Location> = BehaviorSubject.create()
 
     @SuppressLint("MissingPermission")
     fun locationObservable(): Observable<Location> {
-        val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(1000)
-
+        val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(0)
         return RxJavaInterop.toV2Observable(reactiveLocationProvider.getUpdatedLocation(locationRequest))
                 .doOnNext { currentLocation.onNext(it) }
                 .mergeWith(currentLocation.take(1))
                 .distinctUntilChanged()
     }
+
 }

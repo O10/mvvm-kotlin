@@ -1,4 +1,4 @@
-package com.kissdigital.mvvm_kotlin.app.di
+package com.kissdigital.mvvm_kotlin.app.di.scope
 
 import javax.inject.Scope
 
