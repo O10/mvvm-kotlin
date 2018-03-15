@@ -9,7 +9,7 @@ import timber.log.Timber
 /**
  * Created by Aleksander Wójcik on 13.03.2018.
  */
-class ChildFragment: MvvmFragment<ChildViewModel>() {
+class ChildFragment : MvvmFragment<ChildViewModel>() {
 
     override val viewModelType = ChildViewModel::class.java
 

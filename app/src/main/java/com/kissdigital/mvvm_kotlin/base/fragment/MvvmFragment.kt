@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import com.kissdigital.mvvm_kotlin.base.viewmodel.BaseViewModel
-import timber.log.Timber
 import javax.inject.Inject
 
 /**

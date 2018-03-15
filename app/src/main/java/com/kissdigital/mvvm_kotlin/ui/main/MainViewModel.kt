@@ -19,11 +19,11 @@ class MainViewModel @Inject constructor(private val reactiveLocationProvider: Re
 
     @SuppressLint("MissingPermission")
     fun locationObservable(): Observable<Location> {
-        val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+        val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(0)
         return RxJavaInterop.toV2Observable(reactiveLocationProvider.getUpdatedLocation(locationRequest))
-//                .doOnNext { currentLocation.onNext(it) }
-//                .mergeWith(currentLocation.take(1))
-//                .distinctUntilChanged()
+                .doOnNext { currentLocation.onNext(it) }
+                .mergeWith(currentLocation.take(1))
+                .distinctUntilChanged()
     }
 
 }

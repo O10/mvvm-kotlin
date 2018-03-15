@@ -16,6 +16,10 @@ class MainActivity : MvvmActivity<MainViewModel>() {
         super.onStart()
         viewModel.locationObservable()
                 .bindUntilEvent(this, ActivityEvent.STOP)
+                .map { Pair(System.currentTimeMillis(), it) }
+                .buffer(2, 1)
+                .doOnNext { Timber.d("Lag is ${it[1].first - it[0].first} ms") }
+                .map { it.last().second }
                 .subscribe {
                     locationText.text = it.toString()
                     Timber.d("Current location $it")

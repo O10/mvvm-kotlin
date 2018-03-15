@@ -8,7 +8,6 @@ import com.kissdigital.mvvm_kotlin.base.fragment.MvvmFragment
 import com.kissdigital.mvvm_kotlin.ui.child.ChildFragment
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
 import kotlinx.android.synthetic.main.fragment_clicks.*
-import timber.log.Timber
 
 /**
  * Created by O10 on 29.05.2017.
