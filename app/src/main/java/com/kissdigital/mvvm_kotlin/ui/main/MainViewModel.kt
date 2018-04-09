@@ -3,6 +3,7 @@ package com.kissdigital.mvvm_kotlin.ui.main
 import android.annotation.SuppressLint
 import android.location.Location
 import com.google.android.gms.location.LocationRequest
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.kissdigital.mvvm_kotlin.base.viewmodel.BaseViewModel
 import hu.akarnokd.rxjava.interop.RxJavaInterop
 import io.reactivex.Observable
@@ -15,15 +16,15 @@ import javax.inject.Inject
  */
 class MainViewModel @Inject constructor(private val reactiveLocationProvider: ReactiveLocationProvider) : BaseViewModel() {
 
-    private val currentLocation: BehaviorSubject<Location> = BehaviorSubject.create()
+    private val currentLocation: BehaviorRelay<Location> = BehaviorRelay.create()
 
     @SuppressLint("MissingPermission")
     fun locationObservable(): Observable<Location> {
         val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(0)
-        return RxJavaInterop.toV2Observable(reactiveLocationProvider.getUpdatedLocation(locationRequest))
-                .doOnNext { currentLocation.onNext(it) }
-                .mergeWith(currentLocation.take(1))
-                .distinctUntilChanged()
+        val source = RxJavaInterop.toV2Observable(reactiveLocationProvider
+                .getUpdatedLocation(locationRequest))
+                .subscribe(currentLocation)
+        return currentLocation.doOnDispose { source.dispose() }
     }
 
 }

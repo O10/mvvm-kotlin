@@ -28,10 +28,11 @@ class ClickFragment : MvvmFragment<ClicksViewModel>() {
         viewModel.clicksObservable.bindToLifecycle(this).subscribe { clicksNum.text = it.toString() }
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (childFragmentManager.findFragmentByTag(CHILD_FRAGMENT_TAG) == null) {
             childFragmentManager.beginTransaction().replace(R.id.childFragmentFrame, ChildFragment(), CHILD_FRAGMENT_TAG).commit()
         }
     }
+    
 }

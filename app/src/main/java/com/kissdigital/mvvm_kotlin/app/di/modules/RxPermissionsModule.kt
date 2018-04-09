@@ -10,10 +10,13 @@ import dagger.Provides
  * Created by O10 on 29.05.2017.
  */
 @Module
-abstract class RxPermissionsModule(val activity: Activity) {
+abstract class RxPermissionsModule {
 
-    @ActivityScope
-    @Provides
-    fun rxPermissions(): RxPermissions = RxPermissions(activity)
+    @Module
+    companion object {
+        @JvmStatic
+        @Provides
+        fun rxPermissions(activity: Activity): RxPermissions = RxPermissions(activity)
+    }
 
 }

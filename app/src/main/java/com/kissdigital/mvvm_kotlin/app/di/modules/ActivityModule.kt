@@ -11,7 +11,7 @@ import dagger.Provides
 /**
  * Created by Aleksander Wójcik on 25.01.2018.
  */
-@Module
+@Module (includes = [(RxPermissionsModule::class)])
 abstract class ActivityModule {
 
     @Binds

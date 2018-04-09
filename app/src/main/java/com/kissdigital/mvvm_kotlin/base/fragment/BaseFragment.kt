@@ -23,7 +23,7 @@ abstract class BaseFragment : RxFragment(), HasSupportFragmentInjector {
     lateinit var childFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     val myApp: MyApp
-        get() = activity.application as MyApp
+        get() = activity?.application as MyApp
 
     protected abstract val layoutId: Int
 
@@ -34,7 +34,7 @@ abstract class BaseFragment : RxFragment(), HasSupportFragmentInjector {
         super.onAttach(context)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            LayoutInflater.from(context).inflate(layoutId, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        LayoutInflater.from(context).inflate(layoutId, container, false)
 
 }
