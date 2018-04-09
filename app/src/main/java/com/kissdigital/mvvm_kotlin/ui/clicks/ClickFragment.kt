@@ -34,5 +34,5 @@ class ClickFragment : MvvmFragment<ClicksViewModel>() {
             childFragmentManager.beginTransaction().replace(R.id.childFragmentFrame, ChildFragment(), CHILD_FRAGMENT_TAG).commit()
         }
     }
-    
+
 }

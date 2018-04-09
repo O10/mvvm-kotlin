@@ -11,7 +11,7 @@ import javax.inject.Inject
  */
 abstract class MvvmFragment<T : BaseViewModel> : BaseFragment() {
 
-    abstract protected val viewModelType: Class<T>
+    protected abstract val viewModelType: Class<T>
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

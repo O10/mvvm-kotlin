@@ -21,7 +21,7 @@ class MyViewModelFactory @Inject constructor(private val creators: Map<Class<out
             }
         }
         if (creator == null) {
-            throw IllegalArgumentException("unknown model class " + modelClass)
+            throw IllegalArgumentException("unknown model class $modelClass")
         }
         try {
             @Suppress("UNCHECKED_CAST")

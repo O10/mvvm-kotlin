@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ChildFragmentBuildersModule {
 
     @ChildFragmentScope
-    @ContributesAndroidInjector(modules = arrayOf(ChildFragmentViewModelModule::class))
+    @ContributesAndroidInjector(modules = [(ChildFragmentViewModelModule::class)])
     abstract fun childFragment(): ChildFragment
 
 }

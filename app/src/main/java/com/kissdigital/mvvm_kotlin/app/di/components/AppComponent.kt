@@ -12,9 +12,7 @@ import dagger.android.AndroidInjector
  * Created by O10 on 29.05.2017.
  */
 @ApplicationScope
-@Component(modules = arrayOf(AndroidInjectionModule::class,
-        AppModule::class,
-        ActivityBuildersModule::class))
+@Component(modules = [(AndroidInjectionModule::class), (AppModule::class), (ActivityBuildersModule::class)])
 interface AppComponent : AndroidInjector<MyApp> {
 
     @Component.Builder

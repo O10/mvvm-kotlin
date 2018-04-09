@@ -35,6 +35,6 @@ abstract class BaseFragment : RxFragment(), HasSupportFragmentInjector {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        LayoutInflater.from(context).inflate(layoutId, container, false)
+            LayoutInflater.from(context).inflate(layoutId, container, false)
 
 }

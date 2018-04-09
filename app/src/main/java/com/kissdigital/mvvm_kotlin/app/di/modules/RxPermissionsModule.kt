@@ -1,7 +1,6 @@
 package com.kissdigital.mvvm_kotlin.app.di.modules
 
 import android.app.Activity
-import com.kissdigital.mvvm_kotlin.app.di.scope.ActivityScope
 import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.Module
 import dagger.Provides

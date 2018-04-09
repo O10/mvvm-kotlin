@@ -7,7 +7,6 @@ import com.jakewharton.rxrelay2.BehaviorRelay
 import com.kissdigital.mvvm_kotlin.base.viewmodel.BaseViewModel
 import hu.akarnokd.rxjava.interop.RxJavaInterop
 import io.reactivex.Observable
-import io.reactivex.subjects.BehaviorSubject
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
 import javax.inject.Inject
 

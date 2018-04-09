@@ -15,7 +15,7 @@ abstract class MvvmActivity<T : BaseViewModel> : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    abstract protected val viewModelType: Class<T>
+    protected abstract val viewModelType: Class<T>
 
     protected val viewModel: T by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(viewModelType)

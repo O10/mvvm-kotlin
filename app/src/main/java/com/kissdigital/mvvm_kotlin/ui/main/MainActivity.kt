@@ -6,6 +6,7 @@ import com.kissdigital.mvvm_kotlin.base.activity.MvvmActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.trello.rxlifecycle2.android.ActivityEvent
 import com.trello.rxlifecycle2.kotlin.bindUntilEvent
+import dagger.Lazy
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -16,19 +17,19 @@ class MainActivity : MvvmActivity<MainViewModel>() {
     override val viewModelType = MainViewModel::class.java
 
     @Inject
-    lateinit var rxPermissions: RxPermissions
+    lateinit var rxPermissions: Lazy<RxPermissions>
 
     override fun onStart() {
         super.onStart()
-        rxPermissions
+        rxPermissions.get()
                 .request(Manifest.permission.ACCESS_FINE_LOCATION)
                 .filter { it }
-                .switchMap{ viewModel.locationObservable()}
+                .concatMap { viewModel.locationObservable() }
                 .bindUntilEvent(this, ActivityEvent.STOP)
-                .subscribe {
+                .subscribe({
                     locationText.text = it.toString()
                     Timber.d("Current location $it")
-                }
+                }, { Timber.e(it, "Error occured") })
     }
 
 }
